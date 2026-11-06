@@ -1,0 +1,40 @@
+/* Scoped to the exported home carousel, including after React hydration. */
+body:has(main section[class*="h-[78vh]"]) header {
+  position: absolute;
+  inset: 0 0 auto;
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+  color: var(--ink-foreground);
+}
+body:has(main section[class*="h-[78vh]"]) header span,
+body:has(main section[class*="h-[78vh]"]) header nav a,
+body:has(main section[class*="h-[78vh]"]) header button {
+  color: var(--ink-foreground);
+}
+body:has(main section[class*="h-[78vh]"]) header nav a:hover,
+body:has(main section[class*="h-[78vh]"]) header nav a[aria-current="page"] {
+  color: var(--gold);
+}
+body:has(main section[class*="h-[78vh]"]) header a[href*="wa.me"] {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: var(--ink-foreground);
+}
+body:has(main section[class*="h-[78vh]"]) header a[href*="wa.me"]:hover {
+  background: var(--gold);
+  color: var(--primary-foreground);
+  border-color: var(--gold);
+}
+main section[class*="h-[78vh]"] {
+  height: 100vh;
+  height: 100svh;
+  min-height: 540px;
+}
+main section[class*="h-[78vh]"] > div.relative {
+  padding-top: 120px;
+  padding-bottom: 48px;
+}
+@media (max-width: 639px) {
+  main section[class*="h-[78vh]"] > div.relative { padding-bottom: 32px; }
+}

@@ -271,6 +271,27 @@
     cnpj.style.cssText = "opacity:0.75;font-size:0.72rem;letter-spacing:0.08em";
     holder.insertBefore(cnpj, a);
     (last && last.parentNode ? last.parentNode : footer).appendChild(holder);
+    if (!footer.querySelector("[data-allhub]")) {
+      var dev = document.createElement("p");
+      dev.setAttribute("data-allhub", "");
+      dev.textContent = "Desenvolvido por All Hub";
+      dev.style.cssText = "text-align:center;opacity:0.45;font-size:0.68rem;letter-spacing:0.12em;padding:0 1.25rem 1.5rem;margin:0";
+      footer.appendChild(dev);
+    }
+  }
+
+  /* ---------- 6. imagens responsivas ---------- */
+  function ensureResponsiveCss() {
+    if (document.getElementById("responsive-img-css")) return;
+    var st = document.createElement("style");
+    st.id = "responsive-img-css";
+    st.textContent =
+      'main img{max-width:100%}' +
+      'main img:not([class*="absolute"]):not([class*="size-full"]):not([class*="aspect-"]){height:auto}' +
+      'html,body{overflow-x:hidden}.whitespace-pre-line{white-space:pre-line}' +
+      '@media(max-width:767px){main img[class*="aspect-[4/5]"],main img[class*="aspect-square"]{aspect-ratio:4/3}' +
+      '.gallery-bento>figure{aspect-ratio:1}main [class*="columns-"] img{max-height:70vh;object-fit:cover}}';
+    document.head.appendChild(st);
   }
 
   function sweep() {
@@ -280,6 +301,7 @@
     ensureCarouselMotion();
     sweepGallery();
     sweepFooter();
+    ensureResponsiveCss();
   }
 
   sweep();
